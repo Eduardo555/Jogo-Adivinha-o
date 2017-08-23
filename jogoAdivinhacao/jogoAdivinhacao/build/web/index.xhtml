@@ -45,8 +45,8 @@
                     <label class="control-label">Digite Seu Palpite:</label>
                     <h:inputText class="form-control text-center" value="#{adivinharNumeroMB.numeroPalpite}"/>
                     <h:commandButton class="btn btn-success" value="JOGAR" action="#{adivinharNumeroMB.verificaPalpite()}"/>
-                    <h:commandButton class="btn btn-danger" value="REINICIAR"/>
-                    <h:commandButton class="btn btn-info" value="MOSTRAR RESPOSTA"/>
+                    <h:commandButton class="btn btn-danger" value="REINICIAR" action="#{adivinharNumeroMB.reiniciarJogo()}"/>
+                    <h:commandButton class="btn btn-info" value="MOSTRAR RESPOSTA" action="#{adivinharNumeroMB.mostrarNumeroSecreto()}"/>
                 </h:form>
                 
             </div>

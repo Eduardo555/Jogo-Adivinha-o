@@ -15,16 +15,50 @@ public class adivinharNumeroMB {
     private String numeroSecretoExibir = "xxxxxxx";
     private String mensagem = "Sem nenhuma dica por enquanto";
     
+    public void mostrarNumeroSecreto(){
+        numeroSecretoExibir = numeroSecreto.toString();
+    }
+    
+    public void gerarNumeroSecreto(){
+        numeroSecreto = new Random().nextInt(100);
+    }
+    
+    public void reiniciarJogo(){
+        rodadas = 10;
+        mensagem = "Sem nenhuma dica por enquanto";
+        numeroSecretoExibir = "xxxxxxx";
+        numeroPalpite = 0;
+        gerarNumeroSecreto();
+    }
+    
+    public void gerarMensagem(){
+        
+        if(numeroPalpite > numeroSecreto){
+            mensagem = "O número digitado é maior que o número oculto.";
+        }
+        else if(numeroPalpite < numeroSecreto){
+            mensagem = "O número digitado é menor que o número oculto.";
+        }
+        else if(numeroPalpite == numeroSecreto){
+            mensagem = "Parabéns você acertou!!";
+        }
+        
+    }
+    
     public void verificaPalpite(){
         if(rodadas > 0 && numeroPalpite == numeroSecreto){
              /*mostrar numero*/
+             gerarMensagem();
+             mostrarNumeroSecreto();
         }
-        else if(rodadas > 0){
+        else if(rodadas > 0 && numeroPalpite != numeroSecreto){
             rodadas --;
             /*gerar mensagem de dica*/
+            gerarMensagem();
         }
         else{
             mensagem = "Você perdeu suas chances acabaram!";
+            mostrarNumeroSecreto();
         }
     }
     
@@ -53,7 +87,8 @@ public class adivinharNumeroMB {
     }
     
     public adivinharNumeroMB() {
-        numeroSecreto = new Random().nextInt(100);
+        //Chamar funcao para gerar numero secreto
+        gerarNumeroSecreto();
     }
 
     public String getNumeroSecretoExibir() {
